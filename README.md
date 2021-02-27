@@ -22,6 +22,12 @@ The reducer function should return your state, so remember to set that up that a
 
 ## Components
 
-Now let's move on to components: for the react-router-dom props, you need to use the RouteProps interface (imported from react-router-dom), for your props, you should use the same interface as the state. I named them differently and passed them as different params in the functional component  
+I tried to keep the components as simple as possible. 
+
+When handling events, **remember React has its own Event interfaces**
+
+
+
+
 
 
