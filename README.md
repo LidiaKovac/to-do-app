@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# to-do-app AKA weekend review 
+ 
+## Redux Setup: 
+Since this is a TS React App, to use Redux we need some additional setup: 
+### Store: 
+with the library [Redux Devtools Extension](https://www.npmjs.com/package/redux-devtools-extension) we are able to set the brower extension without running into typescript issues. Since we don't need to do anything particular with the extension, we can just use the composeWithDevTools() function in the configureStore().
+Remember to pass ```configureStore():Store<State, any>```. The Store interface is imported from redux and the State one is your to make. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ You can take a look at how i setup my  : ```interfaces.ts``` in the repo.
+ 
+**Remember to wrap your <App/> in a Provider.**
 
-## Available Scripts
+### Reducers: 
 
-In the project directory, you can run:
+Oddly, it looks like **you cannot setup your initial state from the store** without running into issues. This is something I investigated for hours, but this solution I found is a combo of many many repos and solutions, many of which were honestly too complex for my taste: 
+1. Instead of passing the initial state, in the configureStore(), pass an ```undefined``` value. 
+2. In your reducer, declare your initial state using your state interface. 
+3. When creating the reducer, pass ```state=initial_state``` (or however you called your variable) as one of the params. 
 
-### `npm start`
+p.s. I ended up declaring the state as an empty array and therefore not assigning any type. 
+Here is how I went about it before deciding to change: 
+ ```js
+ const basic_state:State = {
+	tasks: {
+		data: [
+			{
+				id: "",
+				title: "",
+				created: "",
+				checked: ""
+			}
+		]
+	},
+	fullfilled: {
+		data: []
+	}
+}
+```
+Using the State type on the initial state allowed me to not declare types later in the reducer. When I changed both the tasks and fullfilled values to data: [], I had to declare some typings in the reducer. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The action passed as a second prop in the reducer is of type Action, which is a custom interface made of type (string, could also be from a list on constants) and payload (what you plan on sending, in my case, tasks.).
+The reducer function should return your state, so remember to set that up that after the params.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Components
 
-### `npm test`
+I tried to keep the components as simple as possible.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Components have types, which require a Prop type as argument. You need to build this interface yourself. 
+When doing so, keep in mind all of your actions and other custom props need to be defined.
+Take a look at the React DevTools to build your interface. 
+Example from this repo:
+```js 
+export interface IProps {
+    add_to_list: (task: Task)=>void,
+    remove_from_list: (task: Task)=>void,
+    check_as_done: (task: Task)=>void,
+    to_do: State
+}
+```
+The "to_do" value contains all the tasks added and fullfilled. 
 
-### `npm run build`
+When handling events, **remember React has its own Event interfaces**
+You might try to use ```event.target.value```, but you will fail. When trying to get the value from an input, remember to use the currentTarget prop, which is where you will find what you are looking for. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
