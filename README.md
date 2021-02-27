@@ -48,6 +48,9 @@ I tried to keep the components as simple as possible.
 Components have types, which require a Prop type as argument. You need to build this interface yourself. 
 When doing so, keep in mind all of your actions and other custom props need to be defined.
 Take a look at the React DevTools to build your interface. 
+
+Best resource for React Component types is [https://github.com/typescript-cheatsheets/react](the typescript react cheatsheet), a community curated repo.
+
 Example from this repo:
 ```js 
 export interface IProps {
