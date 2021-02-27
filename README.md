@@ -19,3 +19,6 @@ To setup your initial state, export it as namespace from another file. I used th
 Remember to also set up a State interface and one for what you plan to put in the state. You can take a look at how i setup my  : ```interfaces.ts``` in the repo. 
 
 
+Now let's move on to components: for the react-router-dom props, you need to use the RouteProps interface (imported from react-router-dom), for your props, you should use the same interface as the state. I named them differently and passed them as different params in the functional component  
+
+
