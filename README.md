@@ -49,7 +49,7 @@ Components have types, which require a Prop type as argument. You need to build 
 When doing so, keep in mind all of your actions and other custom props need to be defined.
 Take a look at the React DevTools to build your interface. 
 
-Best resource for React Component types is (https://github.com/typescript-cheatsheets/react)[the typescript react cheatsheet], a community curated repo.
+Best resource for React Component types is [the typescript react cheatsheet](https://github.com/typescript-cheatsheets/react), a community curated repo.
 
 Example from this repo:
 ```js 
