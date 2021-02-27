@@ -16,40 +16,6 @@ with the library [Redux Devtools Extension](https://www.npmjs.com/package/redux-
 
 To setup your initial state, export it as namespace from another file. I used the reducer file, but you can setup a new one if you think it's the case.
 
-Remember to also set up a State interface and one for what you plan to put in the state. This is my example of  ```interfaces.ts``` : 
-```js 
-export interface State {
-    tasks: {
-        data: Array<Task>
-    },
-    fullfilled: {
-        data: Array<Task>
-    }
-}
-
-export interface Task {
-    id: String,
-    title: String,
-    created: String,
-    checked: String
-}
-
-import moment from "moment"
-import uniqid from "uniqid"
-
-export namespace initialState {
-    tasks: {
-        data: [{
-        id: uniqid(),
-        title: "",
-        created: moment().format("DD/MM"),
-        checked: moment().format("DD/MM")
-    }]}
-    fullfilled: []
-}
-
-```
-
-
+Remember to also set up a State interface and one for what you plan to put in the state. You can take a look at how i setup my  : ```interfaces.ts``` in the repo. 
 
 
