@@ -43,7 +43,20 @@ The reducer function should return your state, so remember to set that up that a
 
 ## Components
 
-I tried to keep the components as simple as possible. 
+I tried to keep the components as simple as possible.
+
+Components have types, which require a Prop type as argument. You need to build this interface yourself. 
+When doing so, keep in mind all of your actions and other custom props need to be defined.
+Take a look at the React DevTools to build your interface. 
+Example from this repo:
+```js 
+export interface IProps {
+    add_to_list: (task: Task)=>void,
+    remove_from_list: (task: Task)=>void,
+    check_as_done: (task: Task)=>void,
+    to_do: State
+}
+```
 
 When handling events, **remember React has its own Event interfaces**
 You might try to use ```event.target.value```, but you will fail. When trying to get the value from an input, remember to use the currentTarget prop, which is where you will find what you are looking for. 
