@@ -23,7 +23,7 @@ export interface State {
         data: Array<Task>
     },
     fullfilled: {
-    data: Array<Task>
+        data: Array<Task>
     }
 }
 
@@ -33,6 +33,7 @@ export interface Task {
     created: String,
     checked: String
 }
+
 import moment from "moment"
 import uniqid from "uniqid"
 
@@ -46,6 +47,7 @@ export namespace initialState {
     }]}
     fullfilled: []
 }
+
 ```
 
 
