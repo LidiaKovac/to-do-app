@@ -11,6 +11,22 @@
   - Step 2: Install Redux and Redux Thunk
     - Since this is a TS React App, to use Redux we need some additional setup: 
       - with the library [Redux Devtools Extension](https://www.npmjs.com/package/redux-devtools-extension) we are able to set the brower extension without running into typescript issues. Since we don't need to do anything particular with the extension, I just used the composeWithDevTools() function in the export instead of declaring it as a constant. 
-      - 
+      - Remember to set up a State interface and one for what you plan to put in the state. This is my example: 
+```js 
+export interface State {
+    tasks: {
+        data: Array<Task>
+    },
+}
+
+export interface Task {
+    id: String,
+    title: String,
+    created: String,
+    checked: String
+}
+```
+
+
 
 
