@@ -25,6 +25,8 @@ The reducer function should return your state, so remember to set that up that a
 I tried to keep the components as simple as possible. 
 
 When handling events, **remember React has its own Event interfaces**
+You might try to use ```event.target.value```, but you will fail. When trying to get the value from an input, remember to use the currentTarget prop, which is where you will find what you are looking for. 
+
 
 
 
