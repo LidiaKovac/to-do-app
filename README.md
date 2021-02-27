@@ -22,6 +22,9 @@ export interface State {
     tasks: {
         data: Array<Task>
     },
+    fullfilled: {
+    data: Array<Task>
+    }
 }
 
 export interface Task {
@@ -41,6 +44,7 @@ export namespace initialState {
         created: moment().format("DD/MM"),
         checked: moment().format("DD/MM")
     }]}
+    fullfilled: []
 }
 ```
 
