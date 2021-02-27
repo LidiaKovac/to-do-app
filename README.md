@@ -2,7 +2,7 @@
  
 ## Redux Setup: 
 Since this is a TS React App, to use Redux we need some additional setup: 
-#### Store: 
+### Store: 
 with the library [Redux Devtools Extension](https://www.npmjs.com/package/redux-devtools-extension) we are able to set the brower extension without running into typescript issues. Since we don't need to do anything particular with the extension, we can just use the composeWithDevTools() function in the configureStore().
 Remember to pass ```configureStore():Store<State, any>```. The Store interface is imported from redux and the State one is your to make. 
 
