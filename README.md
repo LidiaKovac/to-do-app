@@ -1,15 +1,6 @@
 # to-do-app AKA weekend review 
-## Topics :
-  - Redux 
-  - Redux Thunk
-  - Hooks
-  - Socket.IO BE/FE
-  - Typescript BE/FE
-  - Auth / OAuth
-## Frontend:
-  - Step 1: CRA - Typescript 
-  - Step 2: Install Redux and Redux Thunk: 
-### Redux Setup: 
+ 
+## Redux Setup: 
 Since this is a TS React App, to use Redux we need some additional setup: 
 #### Store: 
 with the library [Redux Devtools Extension](https://www.npmjs.com/package/redux-devtools-extension) we are able to set the brower extension without running into typescript issues. Since we don't need to do anything particular with the extension, we can just use the composeWithDevTools() function in the configureStore().
@@ -19,7 +10,7 @@ Remember to pass ```configureStore():Store<State, any>```. The Store interface i
  
 **Remember to wrap your <App/> in a Provider.**
 
-#### Reducers: 
+### Reducers: 
 
 Oddly, it looks like **you cannot setup your initial state from the store** without running into issues. This is something I investigated for hours, but this solution I found is a combo of many many repos and solutions, many of which were honestly too complex for my taste: 
 1. Instead of passing the initial state, in the configureStore(), pass an ```undefined``` value. 
@@ -29,6 +20,7 @@ Oddly, it looks like **you cannot setup your initial state from the store** with
 The action passed as a second prop in the reducer is of type Action, which is a custom interface made of type (string, could also be from a list on constants) and payload (what you plan on sending, in my case, tasks.).
 The reducer function should return your state, so remember to set that up that after the params.
 
+## Components
 
 Now let's move on to components: for the react-router-dom props, you need to use the RouteProps interface (imported from react-router-dom), for your props, you should use the same interface as the state. I named them differently and passed them as different params in the functional component  
 
