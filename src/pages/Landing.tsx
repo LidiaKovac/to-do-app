@@ -30,8 +30,8 @@ const Landing:React.FC<IProps> = (props) => {
 				checked: moment().format("DD/MM"),
 			}  
 			props.add_to_list(newTask)
+            e.currentTarget.value = ""
 		}
-        e.currentTarget.value = ""
 	}
     
 	return (
