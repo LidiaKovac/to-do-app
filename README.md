@@ -17,6 +17,27 @@ Oddly, it looks like **you cannot setup your initial state from the store** with
 2. In your reducer, declare your initial state using your state interface. 
 3. When creating the reducer, pass ```state=initial_state``` (or however you called your variable) as one of the params. 
 
+p.s. I ended up declaring the state as an empty array and therefore not assigning any type. 
+Here is how I went about it before deciding to change: 
+ ```js
+ const basic_state:State = {
+	tasks: {
+		data: [
+			{
+				id: "",
+				title: "",
+				created: "",
+				checked: ""
+			}
+		]
+	},
+	fullfilled: {
+		data: []
+	}
+}
+```
+Using the State type on the initial state allowed me to not declare types later in the reducer. When I changed both the tasks and fullfilled values to data: [], I had to declare some typings in the reducer. 
+
 The action passed as a second prop in the reducer is of type Action, which is a custom interface made of type (string, could also be from a list on constants) and payload (what you plan on sending, in my case, tasks.).
 The reducer function should return your state, so remember to set that up that after the params.
 
