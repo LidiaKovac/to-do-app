@@ -59,6 +59,9 @@ export interface IProps {
 ```
 The "to_do" value contains all the tasks added and fullfilled. 
 
+If you are used to declaring your routing like this: ``` <Route></Route> ```, you might run into problems. I switched to a more simple declaration such as: ```<Route exact path='/' component={Landing} />```
+
+
 When handling events, **remember React has its own Event interfaces**
 You might try to use ```event.target.value```, but you will fail. When trying to get the value from an input, remember to use the currentTarget prop, which is where you will find what you are looking for. 
 

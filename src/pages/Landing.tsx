@@ -31,7 +31,9 @@ const Landing:React.FC<IProps> = (props) => {
 			}  
 			props.add_to_list(newTask)
 		}
+        e.currentTarget.value = ""
 	}
+    
 	return (
 		<div className="landing-wrap">
 			<div className="new-item">
@@ -44,14 +46,19 @@ const Landing:React.FC<IProps> = (props) => {
 					}
 				/>
 			</div>
-			<hr />
+		<span>----------- <strong>TO-DO</strong> -----------</span>	
+        <hr/>
 			{props.to_do &&
 				props.to_do.tasks.data.map((task: Task) => (
 					<div className="to-do-item">
-						<input type="checkbox" />
+						<input type="checkbox" onChange={()=>props.check_as_done(task)}/>
 						{task.title}
 					</div>
 				))}
+            <hr/>
+            <span>----------- <strong>DONE</strong> -----------</span>
+            <hr/>
+            {props.to_do.fullfilled.data.length>0 && props.to_do.fullfilled.data.map((task:Task)=> <div className="to-do-item">{task.title}</div>)}
 		</div>
 	)
 }
