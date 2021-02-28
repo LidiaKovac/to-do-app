@@ -51,7 +51,7 @@ const Landing:React.FC<IProps> = (props) => {
 			{props.to_do &&
 				props.to_do.tasks.data.map((task: Task) => (
 					<div className="to-do-item">
-						<input type="checkbox" onChange={()=>props.check_as_done(task)}/>
+						<input type="checkbox" key={uniqid()} checked={false} onChange={()=>props.check_as_done(task)}/>
 						{task.title}
 					</div>
 				))}
