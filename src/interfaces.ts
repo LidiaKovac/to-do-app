@@ -36,8 +36,8 @@ export interface initialState {
 }
 
 export interface IProps {
-    add_to_list: (task: Task)=>void,
-    remove_from_list: (task: Task)=>void,
-    check_as_done: (task: Task)=>void,
-    to_do: State
+    add_to_list?: (task: Task)=>void,
+    remove_from_list?: (task: Task)=>void,
+    check_as_done?: (task: Task)=>void,
+    to_do?: State
 }

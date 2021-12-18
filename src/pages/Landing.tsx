@@ -18,9 +18,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
 
 
 const Landing:React.FC<IProps> = (props) => {
-	useEffect(()=>{
-        console.log(props)
-    })
+	// useEffect(()=>{
+    //     console.log(props)
+    // })
 	const buildAndAdd = (e: React.KeyboardEvent<HTMLInputElement>): void => {
 		if (e.key === "Enter") {
 			let newTask = {
@@ -29,7 +29,7 @@ const Landing:React.FC<IProps> = (props) => {
 				created: moment().format("DD/MM"),
 				checked: moment().format("DD/MM"),
 			}  
-			props.add_to_list(newTask)
+			props?.add_to_list!(newTask)
             e.currentTarget.value = ""
 		}
 	}
@@ -48,17 +48,17 @@ const Landing:React.FC<IProps> = (props) => {
 			</div>
 		<span>----------- <strong>TO-DO</strong> -----------</span>	
         <hr/>
-			{props.to_do &&
-				props.to_do.tasks.data.map((task: Task) => (
+			{props?.to_do &&
+				props?.to_do.tasks.data.map((task: Task) => (
 					<div className="to-do-item">
-						<input type="checkbox" key={uniqid()} checked={false} onChange={()=>props.check_as_done(task)}/>
+						<input type="checkbox" key={uniqid()} checked={false} onChange={()=>props?.check_as_done!(task)}/>
 						{task.title}
 					</div>
 				))}
             <hr/>
             <span>----------- <strong>DONE</strong> -----------</span>
             <hr/>
-            {props.to_do.fullfilled.data.length>0 && props.to_do.fullfilled.data.map((task:Task)=> <div className="to-do-item">{task.title}</div>)}
+            {props?.to_do!.fullfilled.data.length>0 && props?.to_do!.fullfilled.data.map((task:Task)=> <div className="to-do-item">{task.title}</div>)}
 		</div>
 	)
 }
