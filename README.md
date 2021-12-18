@@ -1,4 +1,4 @@
-# to-do-app AKA weekend review 
+# to-do-app AKA weekend review -- updated on 18/12/2021
  
 ## Redux Setup: 
 Since this is a TS React App, to use Redux we need some additional setup: 
