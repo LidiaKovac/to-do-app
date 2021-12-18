@@ -43,7 +43,7 @@ Take a look at the React DevTools to build your interface.
 
 Best resource for React Component types is [the typescript react cheatsheet](https://github.com/typescript-cheatsheets/react), a community curated repo.
 
-Example from this repo:
+Example from this repo: (please not that this has changed)
 ```js 
 export interface IProps {
     add_to_list: (task: Task)=>void,
@@ -54,7 +54,20 @@ export interface IProps {
 ```
 The "to_do" value contains all the tasks added and fullfilled. 
 
-If you are used to declaring your routing like this: ``` <Route></Route> ```, you might run into problems. I switched to a more simple declaration such as: ```<Route exact path='/' component={Landing} />```
+# `react-router-dom v6` update! :warning:
+~~If you are used to declaring your routing like this: ``` <Route></Route> ```, you might run into problems. I switched to a more simple declaration such as: ```<Route exact path='/' component={Landing} />```~~
+
+As for react-router-dom 6.0, the syntax is: `<Route path="/" element={<Landing />} />` (the `exact` keyword does not exist anymore and the `component` props has been changed to `element`), which of course creates problems with typescript and the redux props. 
+
+Routing for this specific project is absolutely useless, but for the sake of the education purpose of this repo, I have solved this by simply making the props not mandatory: 
+```
+export interface IProps {
+    add_to_list?: (task: Task)=>void,
+    remove_from_list?: (task: Task)=>void,
+    check_as_done?: (task: Task)=>void,
+    to_do?: State
+}
+```
 
 
 When handling events, **remember React has its own Event interfaces**
