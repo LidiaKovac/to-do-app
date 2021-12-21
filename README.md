@@ -8,7 +8,7 @@ Remember to pass ```configureStore():Store<State, any>```. The Store interface i
 
  You can take a look at how i setup my  : ```interfaces.ts``` in the repo.
  
-**Remember to wrap your <App/> in a Provider.**
+**Remember to wrap your `<App/>` in a Provider.**
 
 ### Reducers: 
 
